@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculator</title>
+        <meta charset = "utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+            body {
+                background-image: url("http://dpeeps.com/wp-content/uploads/2017/06/ios-8-default-spiral-galaxy-iphone-5-desktop-one-two-14.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                text-align: center;
+            }
+            
+            h1 {
+                color: white;
+            }
+            
+            #calculator {
+                background-color: midnightblue;
+                border: solid darkgray 2px;
+                border-radius: 5px;
+                padding: 10px;
+                width: 225px;
+                margin: 50px auto;
+            }
+            
+            #display {
+                margin-bottom: 10px;
+                /*width: 10em*/
+                border: solid darkgray 1px;
+                text-align: right;
+            }
+            
+            #keys {
+                width: 40px;
+                height: 40px;
+                margin: 2px;
+            }
+            
+            #keys2 {
+                width: 89px;
+                height: 40px;
+                margin: 2px;
+            }
+        </style>
+    </head>
+    <body class="container">
+        <h1>Javascript calculator</h1>
+        
+        <div id="calculator">
+            <form>
+                <input type="text" id="display" disabled> <!-- Where the input from buttons will go -->
+                <br>
+                <input type="button" class="btn btn-primary" value="C" id="keys" onclick="clearCalc()">
+                <input type="button" class="btn btn-primary" value="CE" id="keys" onclick="clearOne()">
+                <input type="button" class="btn btn-primary" value="x^2" id="keys" onclick="square()">
+                <input type="button" class="btn btn-primary" value="+" id="keys" onclick="toScreen('+')">
+                <br>
+                <input type="button" class="btn btn-primary" value="7" id="keys" onclick="toScreen('7')">
+                <input type="button" class="btn btn-primary" value="8" id="keys" onclick="toScreen('8')">
+                <input type="button" class="btn btn-primary" value="9" id="keys" onclick="toScreen('9')">
+                <input type="button" class="btn btn-primary" value="-" id="keys" onclick="toScreen('-')">
+                <br>
+                <input type="button" class="btn btn-primary" value="4" id="keys" onclick="toScreen('4')">
+                <input type="button" class="btn btn-primary" value="5" id="keys" onclick="toScreen('5')">
+                <input type="button" class="btn btn-primary" value="6" id="keys" onclick="toScreen('6')">
+                <input type="button" class="btn btn-primary" value="*" id="keys" onclick="toScreen('*')">
+                <br>
+                <input type="button" class="btn btn-primary" value="1" id="keys" onclick="toScreen('1')">
+                <input type="button" class="btn btn-primary" value="2" id="keys" onclick="toScreen('2')">
+                <input type="button" class="btn btn-primary" value="3" id="keys" onclick="toScreen('3')">
+                <input type="button" class="btn btn-primary" value="/" id="keys" onclick="toScreen('/')">
+                <br>
+                <input type="button" class="btn btn-primary" value="0" id="keys" onclick="toScreen('0')">
+                <input type="button" class="btn btn-primary" value="." id="keys" onclick="toScreen('.')">
+                <input type="button" class="btn btn-primary" value="=" id="keys2" onclick="answer()">
+            </form>
+        </div>
+        
+        <script>
+            var str = document.getElementById("display");
+            
+            function toScreen(arg){
+                str.value += arg;
+            }
+            
+            function clearCalc(){
+                str.value = "";
+            }
+            
+            function clearOne(){
+                var x = str.value;
+                var len = x.length - 1;
+                var newEq = x.substring(0, len);
+                str.value = newEq;
+            }
+            
+            function answer(){
+                var x = str.value;
+                var y = eval(x);
+                str.value = y;
+            }
+            
+            function square(){
+                var x = str.value;
+                var y = eval(x);
+                str.value = (y * y);
+            }
+        </script>
+    </body>
+</html>
